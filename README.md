@@ -24,3 +24,8 @@
 ```shell
 > poetry run python src/predict.py
 ```
+
+
+## Reference
+
+[1] PyTorchによる発展ディープラーニング, 2019
