@@ -4,6 +4,7 @@
 
 ```shell
 > poetry install
+> poetry run python -m pip install -U pip
 > poetry run poe torch-cuda11
 ```
 
