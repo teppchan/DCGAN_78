@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "dcgan"
+version = "0.1.0"
+description = ""
+authors = ["teppchan <teppchan+github@github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Pillow = "^8.2.0"
+#torch = { url = "https://download.pytorch.org/whl/cu111/torch-1.8.1%2Bcu111-cp39-cp39-win_amd64.whl" }
+#torchvision = { url = "https://download.pytorch.org/whl/cu111/torchvision-0.9.1%2Bcu111-cp39-cp39-win_amd64.whl" }
+
+matplotlib = "^3.4.1"
+scikit-learn = "^0.24.2"
+[tool.poetry.dev-dependencies]
+pysen = {version = "^0.9.1", extras = ["lint"]}
+poethepoet = "^0.10.0"
+
+[tool.poe.tasks]
+torch-cuda11 = "pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pysen]
+version = "0.9"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = true
+mypy_preset = "strict"
+line_length = 88
+py_version = "py37"
+[[tool.pysen.lint.mypy_targets]]
+  paths = ["./src"]
+
+[tool.pysen.lint.source]
+  includes = ["./src"]
+
+[tool.pysen.lint.mypy_modules."pysen.scripts"]
+  preset = "entry"
+
+[tool.pysen.lint.mypy_modules."numpy"]
+  ignore_errors = true
